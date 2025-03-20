@@ -18,7 +18,7 @@ $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $(TARGET)
 
 run:
-	python3 tests/run_tests.py
+	python3 tests/test_parser.py
 
 clear:
 	@find $(BUILD_DIR) -mindepth 1 ! -name ".gitkeep" -delete
