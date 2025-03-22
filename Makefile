@@ -8,7 +8,7 @@ TESTS_OUTPUT_DIR = tests/output
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRC))
 
-TARGET = lexer
+TARGET = parser
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@mkdir -p $(BUILD_DIR)
@@ -18,9 +18,9 @@ $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $(TARGET)
 
 run:
-	python3 tests/run_tests.py
+	python3 tests/test_parser.py
 
 clear:
 	@find $(BUILD_DIR) -mindepth 1 ! -name ".gitkeep" -delete
 	@find $(TESTS_OUTPUT_DIR) -mindepth 1 ! -name ".gitkeep" -delete
-	@rm -f lexer
+	@rm -f parser
